@@ -1,0 +1,19 @@
+{
+  "name": "settle.acceptance.js",
+  "version": "0.5.4",
+  "description": "Settle Acceptance library",
+  "homepage": "https://github.com/aukaio/settle.acceptance.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aukaio/settle.acceptance.js.git"
+  },
+  "scripts": {
+    "build": "webpack",
+    "example": "python -m SimpleHTTPServer 7080",
+    "test": "./node_modules/grunt-cli/bin/grunt test"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.5"
+  },
+  "dependencies": {}
+}

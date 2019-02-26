@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="dist/settle.acceptance.min.js"></script>
+    <title>settle.acceptance.js</title>
+</head>
+<body>
+
+<div class="settle-acceptance" data-shortlink-id="foo" data-shortlink-argstring="bar" data-alternate="true" data-settle-lang="no"></div>
+<div class="settle-acceptance" data-shortlink-id="moo" data-shortlink-argstring="far" data-alternate="false" data-settle-lang="en"></div>
+<div class="settle-acceptance" data-shortlink-id="boo" data-alternate="true"></div>
+<div class="settle-acceptance" data-shortlink-id="doo" data-alternate="true" data-shortlink-prefix="q"></div>
+
+<script>
+    // With jquery installed use -> $(document).ready(Settle.displayQRorButton);
+    Settle.displayQRorButton();
+</script>
+
+</body>
+</html>

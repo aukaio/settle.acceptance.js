@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'GTEestiProDisplay Regular';
+    src: url('../fonts/GT-Eesti-Pro-Display-Regular.woff') format('woff');
+    font-style: normal;
+    font-weight: 200;
+}
+
+.settle-wrapper {
+    display: inline-block;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #F5F7FB;
+    max-width: 178px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.settle-wrapper .settle-qr-image {
+    border: 1px solid #dadada;
+    background-color: #fff;
+    margin-bottom: 10px;
+    width: auto;
+    padding: 12px;
+}
+
+.settle-wrapper .settle-qr-image img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    display: block;
+}
+.settle-nav {
+    overflow: hidden;
+}
+.settle-logo {
+    width: auto;
+    height: 24px;
+    float: left;
+}
+.settle-link {
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    width: 24px;
+    height: 24px;
+    font-family: 'HermesFB Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    font-size: 12px;
+    color: #fff;
+    line-height: 24px;
+    text-indent: -9999em;
+    margin-left: 6px;
+    float: right;
+}
+.settle-ios {
+    background-image: url('../images/ios.png');
+}
+.settle-ios-w {
+    background-image: url('../images/ios_white.png');
+}
+.settle-android {
+    background-image: url('../images/android.png');
+}
+.settle-android-w {
+    background-image: url('../images/android_white.png');
+}
+.settle-alternate {
+    display: inline-block;
+    border: 1px solid #23a2f1;
+    background-color: #29ACFF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 10px;
+}
+.settle-alternate .settle-qr-image {
+    border: 1px solid #23a2f1;
+    margin-bottom: 10px;
+}
