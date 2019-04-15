@@ -8,12 +8,18 @@
     "url": "git://github.com/aukaio/settle.acceptance.js.git"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "./node_modules/grunt-cli/bin/grunt",
     "example": "python -m SimpleHTTPServer 7080",
     "test": "./node_modules/grunt-cli/bin/grunt test"
   },
   "devDependencies": {
-    "webpack": "^4.29.5"
+    "grunt": "^1.0.4",
+    "grunt-cli": "^1.3.2",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-connect": "^2.0.0",
+    "grunt-contrib-jasmine": "^2.0.3",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-contrib-uglify": "^4.0.1"
   },
   "dependencies": {}
 }

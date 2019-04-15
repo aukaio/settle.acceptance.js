@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         concat: {
             dist: {
                 src: ['src/acceptance.js', 'src/qrcode.js'],
-                dist: 'dist/<%= pkg.name %>.js',
+                dest: 'dist/<%= pkg.name %>.js',
             },
             options: {
                 banner: "" +
@@ -71,7 +71,7 @@ module.exports = function (grunt) {
             },
             build: {
                 src: 'dist/<%= pkg.name %>.js',
-                dist: 'dist/<%= pkg.name %>.min.js'
+                dest: 'dist/<%= pkg.name %>.min.js'
             }
         }
     });
