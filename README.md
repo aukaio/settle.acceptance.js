@@ -20,7 +20,7 @@ After building the code deploy the content of `dist` folder. Pick either settle.
 
 Example and customization
 ------------------------
-[press here](https://rawgit.com/aukaio/settle.acceptance.js/master/index.html)
+[press here](https://aukaio.github.io/settle.acceptance.js/)
 You can open this link in on your phone to see how it changes from QR
 code to button (or fake your user agent and view on your laptop). Shows examples of customization with alternate look and language variants.
 
