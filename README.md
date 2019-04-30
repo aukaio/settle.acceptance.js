@@ -20,14 +20,14 @@ After building the code deploy the content of `dist` folder. Pick either settle.
 
 Example and customization
 ------------------------
-[press here](https://rawgit.com/aukaio/settle.acceptance.js/master/example.html)
+[press here](https://rawgit.com/aukaio/settle.acceptance.js/master/index.html)
 You can open this link in on your phone to see how it changes from QR
 code to button (or fake your user agent and view on your laptop). Shows examples of customization with alternate look and language variants.
 
 
 Try the example
 -------------
-Start a local example server `npm run example` and open [http://localhost:7080/example.html](http://localhost:7080/example.html) in your browser.
+Start a local example server `npm run example` and open [http://localhost:7080/index.html](http://localhost:7080/example.html) in your browser.
 
 Test suit
 -------

@@ -17,17 +17,20 @@
                 }
             },
             setNavigatorLanguageAs = function (name) {
-		window.navigator.language = name;
+                navigator.__defineGetter__('language', function () {
+                    return name;
+                });
             },
             prependNavigatorLanguagesAs = function (name) {
-		if ( window.navigator.languages ) {
-		    window.navigator.languages.unshift(name);
-		} else {
-		    window.navigator.languages = [name];
-		}
+                navigator.__defineGetter__('languages', function () {
+                    return [name];
+                });
             };
 
         beforeEach(function () {
+            navigator.__defineGetter__('languages', function () {
+                return null;
+            });
             spyOn(Settle, 'redirect_to');
         });
 
