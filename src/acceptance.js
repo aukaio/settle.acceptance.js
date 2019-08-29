@@ -70,9 +70,9 @@
             };
 
             var url = [
-                'http://',
+                'https://',
                 config.baseUrl,
-                '?link=' + config.env + '://qr?code=' + encodeURI(shortlinkUrl),
+                '?link=https://' + config.env + '://qr/' + encodeURI(shortlinkUrl),
                 '&apn=' + config.apn,
                 '&ibi=' + config.ibi,
                 '&isi=' + config.isi,
