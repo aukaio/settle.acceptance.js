@@ -73,11 +73,11 @@
             var url = [
                 'https://',
                 config.baseUrl,
-                '?link=https://' + config.env + '://qr/' + encodeURI(shortlinkUrl),
-                '&apn=' + config.apn,
+                '?apn=' + config.apn,
                 '&ibi=' + config.ibi,
                 '&isi=' + config.isi,
-                '&ius=eu.settle.app.firebaselink'
+                '&ius=eu.settle.app.firebaselink',
+                '&link=https://' + config.env + '://qr/' + encodeURI(shortlinkUrl),
             ].join('');
 
             exports.redirect_to(url);
