@@ -80,7 +80,7 @@
             expect(button.length).toBe(1);
 
             button.click();
-            expect(Settle.redirect_to).toHaveBeenCalledWith('settle://qr?code=http://settle.eu/s/moo/');
+            expect(Settle.redirect_to).toHaveBeenCalledWith('https://get.settle.eu?apn=eu.settle.app&ibi=eu.settle.app&isi=1440051902&ius=eu.settle.app.firebaselink&link=https://settle://qr/http://settle.eu/s/moo/');
         });
 
         it('creates a QR button from an id and an argstring', function () {
@@ -94,7 +94,7 @@
             expect(button.length).toBe(1);
 
             button.click();
-            expect(Settle.redirect_to).toHaveBeenCalledWith('settle://qr?code=http://settle.eu/s/moo/far');
+            expect(Settle.redirect_to).toHaveBeenCalledWith('https://get.settle.eu?apn=eu.settle.app&ibi=eu.settle.app&isi=1440051902&ius=eu.settle.app.firebaselink&link=https://settle://qr/http://settle.eu/s/moo/far');
         });
 
         it('creates a custom shortlink', function () {
@@ -108,50 +108,7 @@
             expect(button.length).toBe(1);
 
             button.click();
-            expect(Settle.redirect_to).toHaveBeenCalledWith('settle://qr?code=http://settle.eu/q/foo/');
-        });
-
-        it('creates a custom shortlink on Android using Chrome', function () {
-            setAgentAs("Chrome on Dalvik");
-
-            Settle.displayQRorButton();
-
-            var img = $('#c img[alt="http://settle.eu/s/foo/"]'),
-                button = $('#c button.paywithsettle');
-            expect(img.length).toBe(0);
-            expect(button.length).toBe(1);
-
-            button.click();
-            expect(Settle.redirect_to).toHaveBeenCalledWith('intent://qr?code=http://settle.eu/q/foo/#Intent;scheme=settle;package=no.settle;end');
-        });
-
-        it('creates a custom shortlink on Android using Firefox', function () {
-            setAgentAs("Firefox on Android");
-
-            Settle.displayQRorButton();
-
-            var img = $('#c img[alt="http://settle.eu/s/foo/"]'),
-                button = $('#c button.paywithsettle');
-            expect(img.length).toBe(0);
-            expect(button.length).toBe(1);
-
-            button.click();
-            expect(Settle.redirect_to).toHaveBeenCalledWith('settle://qr?code=http://settle.eu/q/foo/');
-        });
-
-        it('creates a custom shortlink on Android using an unknown browser', function () {
-            setAgentAs("Servo on Android");
-
-            Settle.displayQRorButton();
-
-            var img = $('#a img[alt="http://settle.eu/s/moo/"]'),
-                button = $('#a button.paywithsettle');
-            expect(img.length).toBe(0);
-            expect(button.length).toBe(1);
-
-            expect($('iframe[src="settle://qr?code=http://settle.eu/s/moo/"]').length).toBe(0);
-            button.click();
-            expect($('iframe[src="settle://qr?code=http://settle.eu/s/moo/"]').length).toBe(1);
+            expect(Settle.redirect_to).toHaveBeenCalledWith('https://get.settle.eu?apn=eu.settle.app&ibi=eu.settle.app&isi=1440051902&ius=eu.settle.app.firebaselink&link=https://settle://qr/http://settle.eu/q/foo/');
         });
 
         it('creates a QR button with language as nb-NO', function () {
@@ -159,7 +116,7 @@
 	    setNavigatorLanguageAs("nb-NO");
             Settle.displayQRorButton();
             var label = $('button.paywithsettle .settle-label:first').text();
-	    expect(label).toBe("Åpne med");
+	    expect(label).toBe("Åpne Settle");
         });
 
         it('creates a QR button with language as en-US', function () {
@@ -167,7 +124,7 @@
 	    setNavigatorLanguageAs("en-US");
             Settle.displayQRorButton();
             var label = $('button.paywithsettle .settle-label:first').text();
-	    expect(label).toBe("Open with");
+	    expect(label).toBe("Open Settle");
         });
 
         it('creates a QR button with language as no-NO', function () {
@@ -175,7 +132,7 @@
 	    setNavigatorLanguageAs("no-NO");
             Settle.displayQRorButton();
             var label = $('button.paywithsettle .settle-label:first').text();
-	    expect(label).toBe("Åpne med");
+	    expect(label).toBe("Åpne Settle");
         });
 
         it('creates a QR button with language as se-SE', function () {
@@ -183,7 +140,7 @@
 	    setNavigatorLanguageAs("se-SE");
             Settle.displayQRorButton();
             var label = $('button.paywithsettle .settle-label:first').text();
-	    expect(label).toBe("Open with");
+	    expect(label).toBe("Open Settle");
         });
 
 	it('creates a QR button with prefered language as nb', function () {
@@ -191,7 +148,7 @@
 	    prependNavigatorLanguagesAs("nb");
             Settle.displayQRorButton();
             var label = $('button.paywithsettle .settle-label:first').text();
-	    expect(label).toBe("Åpne med");
+	    expect(label).toBe("Åpne Settle");
         });
 
 	it('creates a QR button with prefered language as nb-NO', function () {
@@ -200,7 +157,7 @@
 	     setNavigatorLanguageAs("en-US");
             Settle.displayQRorButton();
             var label = $('button.paywithsettle .settle-label:first').text();
-	    expect(label).toBe("Åpne med");
+	    expect(label).toBe("Åpne Settle");
         });
 
     });

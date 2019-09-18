@@ -32,14 +32,15 @@
     var SETTLE_SHORTLINK_ENDPOINT = 'http://settle.eu/',
         SETTLE_SHORTLINK_DEFAULT_PREFIX = 's',
         SETTLE_SHORTLINK_RE = /^[a-z]$/,
+        LAUNCH_ICON = 'assets/images/launch_icon.png',
         SETTLE_LOGO = 'assets/images/settle-logo-black.png',
         SETTLE_LOGO_ALTERNATE = 'assets/images/settle-logo-white.png',
         SETTLE_BUTTON_CSS = 'assets/css/button.css',
         SETTLE_QR_CSS = 'assets/css/qr.css',
         SETTLE_LOCALE_MAP = {
-	    nb: 'Åpne med',
-            no: 'Åpne med',
-            en: 'Open with'
+	        nb: 'Åpne Settle',
+            no: 'Åpne Settle',
+            en: 'Open Settle'
         },
         SETTLE_DOWNLOAD_IOS = 'https://itunes.apple.com/us/app/settle/id1440051902?mt=8',
         SETTLE_DOWNLOAD_ANDROID = 'https://play.google.com/store/apps/details?id=eu.settle.app',
@@ -60,69 +61,26 @@
             return '/';
         },
 
-        android_scan = function (g_intent, custom, alt) {
-            var timer,
-                heartbeat,
-                iframe_timer,
-
-                clearTimers = function () {
-                    clearTimeout(timer);
-                    clearTimeout(heartbeat);
-                    clearTimeout(iframe_timer);
-                },
-
-                intervalHeartbeat = function () {
-                    if (document.webkitHidden || document.hidden) {
-                        clearTimers();
-                    }
-                },
-
-                tryIframeApproach = function () {
-                    var iframe = document.createElement("iframe");
-                    iframe.style.border = "none";
-                    iframe.style.width = "1px";
-                    iframe.style.height = "1px";
-                    iframe.onload = function () {
-                        exports.redirect_to(alt);
-                    };
-                    iframe.src = custom;
-                    document.body.appendChild(iframe);
-                },
-
-                tryWebkitApproach = function () {
-                    exports.redirect_to(custom);
-                    timer = setTimeout(function () {
-                        exports.redirect_to(alt);
-                    }, 2500);
-                };
-
-            heartbeat = setInterval(intervalHeartbeat, 200);
-            if (navigator.userAgent.match(/Chrome/)) {
-                exports.redirect_to(g_intent);
-            } else if (navigator.userAgent.match(/Firefox/)) {
-                tryWebkitApproach();
-                iframe_timer = setTimeout(function () {
-                    tryIframeApproach();
-                }, 1500);
-            } else {
-                tryIframeApproach();
-            }
-        },
-
         scan = function (shortlinkUrl) {
-            var is_ios = navigator.userAgent.match(/iPhone|iPad|iPod/),
-                common_part = '://qr?code=' + encodeURI(shortlinkUrl),
-                redirect_url = is_ios ? 'settle' + common_part :
-                        'intent' + common_part + '#Intent;scheme=settle;package=no.settle;end';
+            var config = window.settleConfig || {
+                env: 'settle',
+                baseUrl: 'get.settle.eu',
+                apn: 'eu.settle.app',
+                ibi: 'eu.settle.app',
+                isi: '1440051902'
+            };
 
-            if (is_ios) {
-                exports.redirect_to(redirect_url);
-                setTimeout(function () {
-                    exports.redirect_to(SETTLE_DOWNLOAD_IOS);
-                }, 30000);
-            } else {
-                android_scan(redirect_url, 'settle' + common_part, SETTLE_DOWNLOAD_ANDROID);
-            }
+            var url = [
+                'https://',
+                config.baseUrl,
+                '?apn=' + config.apn,
+                '&ibi=' + config.ibi,
+                '&isi=' + config.isi,
+                '&ius=eu.settle.app.firebaselink',
+                '&link=https://' + config.env + '://qr/' + encodeURI(shortlinkUrl),
+            ].join('');
+
+            exports.redirect_to(url);
         },
 
         loadCSS = function (cssId, href) {
@@ -168,7 +126,7 @@
             span.innerHTML = greeting;
 
             SettlePayImg = document.createElement('img');
-            SettlePayImg.src = prefix + (alternate ? SETTLE_LOGO_ALTERNATE : SETTLE_LOGO);
+            SettlePayImg.src = prefix + LAUNCH_ICON;
 
             SettleButton = document.createElement('button');
             SettleButton.type = 'button';
