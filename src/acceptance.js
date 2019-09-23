@@ -14,6 +14,12 @@
     var exports = {};
     var _timeout;
 
+    import btnCss from '../assets/css/button.css';
+    import qrCss from '../assets/css/qr.css';
+    import launchIcon from '../assets/images/launch_icon.png';
+    import settleLogo from '../assets/images/settle-logo-black.png';
+    import settleLogoAlternate from '../assets/images/settle-logo-white.png';
+
     exports.redirect_to = function (url) {
         location.href = url;
     };
@@ -31,11 +37,9 @@
     var SETTLE_SHORTLINK_ENDPOINT = 'http://settle.eu/',
         SETTLE_SHORTLINK_DEFAULT_PREFIX = 's',
         SETTLE_SHORTLINK_RE = /^[a-z]$/,
-        LAUNCH_ICON = 'assets/images/launch_icon.png',
-        SETTLE_LOGO = 'assets/images/settle-logo-black.png',
-        SETTLE_LOGO_ALTERNATE = 'assets/images/settle-logo-white.png',
-        SETTLE_BUTTON_CSS = 'assets/css/button.css',
-        SETTLE_QR_CSS = 'assets/css/qr.css',
+        LAUNCH_ICON = 'data:image/png;base64,' + launchIcon,
+        SETTLE_LOGO = 'data:image/png;base64,' + settleLogo,
+        SETTLE_LOGO_ALTERNATE = 'data:image/png;base64,' + settleLogoAlternate,
         SETTLE_LOCALE_MAP = {
 	        nb: 'Åpne Settle',
             no: 'Åpne Settle',
@@ -82,20 +86,18 @@
             exports.redirect_to(url);
         },
 
-        loadCSS = function (cssId, href) {
+        loadCSS = function (cssId, content) {
             if (!document.getElementById(cssId)) {
                 var headTag = document.getElementsByTagName('head'),
-                    cssTag = document.createElement('link');
+                    cssTag = document.createElement('style');
 
                 if (!headTag) {
                     headTag = [document.createElement('head')];
                     document.body.appendChild(headTag[0]);
                 }
 
-                cssTag.rel = 'stylesheet';
                 cssTag.id = cssId;
-                cssTag.type = 'text/css';
-                cssTag.href = href;
+                cssTag.innerHTML = content;
                 headTag[0].appendChild(cssTag);
             }
         },
@@ -112,7 +114,7 @@
                 wrapper;
 
 
-            loadCSS('shortlinkcss', prefix + SETTLE_BUTTON_CSS);
+            loadCSS('shortlinkcss', btnCss);
 
             wrapper = document.createElement('div');
             wrapper.className = 'settle-wrapper';
@@ -125,7 +127,7 @@
             span.innerHTML = greeting;
 
             SettlePayImg = document.createElement('img');
-            SettlePayImg.src = prefix + LAUNCH_ICON;
+            SettlePayImg.src = LAUNCH_ICON;
 
             SettleButton = document.createElement('button');
             SettleButton.type = 'button';
@@ -151,7 +153,7 @@
                 logoWrap,
                 wrapper;
 
-            loadCSS('qrcss', prefix + SETTLE_QR_CSS);
+            loadCSS('qrcss', qrCss);
 
             wrapper = document.createElement('div');
             wrapper.className = 'settle-wrapper' + (alternate ? ' settle-alternate' : '');
@@ -200,9 +202,9 @@
             nav.appendChild(Android);
 
             if (!alternate) {
-                logo.src = prefix + SETTLE_LOGO;
+                logo.src = SETTLE_LOGO;
             } else {
-                logo.src = prefix + SETTLE_LOGO_ALTERNATE;
+                logo.src = SETTLE_LOGO_ALTERNATE;
                 iOS.setAttribute('class', 'settle-link settle-ios-w');
                 Android.setAttribute('class', 'settle-link settle-android-w');
             }
