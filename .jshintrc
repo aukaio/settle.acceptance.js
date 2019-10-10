@@ -12,6 +12,7 @@
     "node": true,
     "sub": true,
     "undef": true,
+    "esversion": 6,
     "globals": {
         "it": false,
         "xit": false,

@@ -62,7 +62,7 @@ module.exports = function (grunt) {
                 stripBanners: true,
                 process: function (src, filepath) {
                     return src.replace(/^[^]*var exports\s*=\s*{\s*}\s*;([^]+)return exports;[^]+$/m, '$1');
-                },
+                }
             },
         },
         uglify: {
@@ -73,6 +73,19 @@ module.exports = function (grunt) {
                 src: 'dist/<%= pkg.name %>.js',
                 dest: 'dist/<%= pkg.name %>.min.js'
             }
+        },
+        inlineImport: {
+            options: {
+                extensions: {
+                    ".css": "utf8",
+                    ".png": "base64",
+                    ".woff": "base64"
+                },
+                useVar: true
+            },
+            task: {
+                src: "dist/settle.acceptance.js"
+            }
         }
     });
 
@@ -82,9 +95,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks("grunt-inline-import");
 
-    grunt.registerTask('minify', ['jshint', 'concat', 'uglify']);
-    grunt.registerTask('test', ['minify', 'connect', 'jasmine']);
-
-    grunt.registerTask('default', ['test']);
+    grunt.registerTask('minify', ['concat']);
+    grunt.registerTask('test', ['minify', 'connect', 'inlineImport', 'jasmine']);
+    grunt.registerTask('build', ['minify', 'connect', 'inlineImport', 'uglify', 'jasmine']);
+    grunt.registerTask('default', ['build']);
 };
