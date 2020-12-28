@@ -80,6 +80,7 @@
                 '?apn=' + config.apn,
                 '&ibi=' + config.ibi,
                 '&isi=' + config.isi,
+                '&ius=eu.settle.app.firebaselink',
                 '&link=' +
                 encodeURIComponent('https://' + config.env + '://qr/' + shortlinkUrl),
             ].join('');
