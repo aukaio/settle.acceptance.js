@@ -79,8 +79,8 @@
                 '?apn=' + config.apn,
                 '&ibi=' + config.ibi,
                 '&isi=' + config.isi,
-                '&ius=eu.settle.app.firebaselink',
-                '&link=https://' + config.env + '://qr/' + encodeURI(shortlinkUrl),
+                '&link=' +
+                encodeURIComponent('https://' + config.env + '://qr/' + shortlinkUrl),
             ].join('');
 
             exports.redirect_to(url);

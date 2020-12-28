@@ -80,7 +80,7 @@
             expect(button.length).toBe(1);
 
             button.click();
-            expect(Settle.redirect_to).toHaveBeenCalledWith('https://get.settle.eu?apn=eu.settle.app&ibi=eu.settle.app&isi=1440051902&ius=eu.settle.app.firebaselink&link=https://settle://qr/http://settle.eu/s/moo/');
+            expect(Settle.redirect_to).toHaveBeenCalledWith('https://get.settle.eu?apn=eu.settle.app&ibi=eu.settle.app&isi=1440051902&link=https%3A%2F%2Fsettle%3A%2F%2Fqr%2Fhttp%3A%2F%2Fsettle.eu%2Fs%2Fmoo%2F');
         });
 
         it('creates a QR button from an id and an argstring', function () {
@@ -94,7 +94,7 @@
             expect(button.length).toBe(1);
 
             button.click();
-            expect(Settle.redirect_to).toHaveBeenCalledWith('https://get.settle.eu?apn=eu.settle.app&ibi=eu.settle.app&isi=1440051902&ius=eu.settle.app.firebaselink&link=https://settle://qr/http://settle.eu/s/moo/far');
+            expect(Settle.redirect_to).toHaveBeenCalledWith('https://get.settle.eu?apn=eu.settle.app&ibi=eu.settle.app&isi=1440051902&link=https%3A%2F%2Fsettle%3A%2F%2Fqr%2Fhttp%3A%2F%2Fsettle.eu%2Fs%2Fmoo%2Ffar');
         });
 
         it('creates a custom shortlink', function () {
@@ -108,7 +108,7 @@
             expect(button.length).toBe(1);
 
             button.click();
-            expect(Settle.redirect_to).toHaveBeenCalledWith('https://get.settle.eu?apn=eu.settle.app&ibi=eu.settle.app&isi=1440051902&ius=eu.settle.app.firebaselink&link=https://settle://qr/http://settle.eu/q/foo/');
+            expect(Settle.redirect_to).toHaveBeenCalledWith('https://get.settle.eu?apn=eu.settle.app&ibi=eu.settle.app&isi=1440051902&link=https%3A%2F%2Fsettle%3A%2F%2Fqr%2Fhttp%3A%2F%2Fsettle.eu%2Fq%2Ffoo%2F');
         });
 
         it('creates a QR button with language as nb-NO', function () {
